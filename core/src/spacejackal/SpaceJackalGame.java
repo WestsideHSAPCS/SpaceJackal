@@ -2,6 +2,8 @@ package spacejackal;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +16,8 @@ public class SpaceJackalGame extends ApplicationAdapter
 
 	public static enum Tex
 	{
-		TITLE("titlescreen.png");
+		TITLE("titlescreen.png"),
+        BACKGROUND("game.png");
 
 		Tex(String filename)
 		{
@@ -33,7 +36,18 @@ public class SpaceJackalGame extends ApplicationAdapter
 
 		currScreen = new TitleScreen();
 		currScreen.init(this);
-
+        
+        
+        InputProcessor ip = new InputAdapter()
+		{ 
+			@Override
+			public boolean keyDown(int keycode)
+			{
+				return currScreen.onKeyDown(keycode);
+			}
+		};
+		Gdx.input.setInputProcessor(ip);
+        
 		nextUpdateTime = System.nanoTime() + nanosPerUpdate;
 	}
 
@@ -100,7 +114,7 @@ public class SpaceJackalGame extends ApplicationAdapter
 		// Keep a constant update rate regardless of render rate
 		while (System.nanoTime() - nextUpdateTime > 0)
 		{
-			currScreen.update(this);
+			currScreen.update(projectionWidth, projectionHeight);
 			// Is it time to switch screens yet?
 
 			Screen next = currScreen.getNextScreen();
