@@ -1,5 +1,6 @@
 package spacejackal;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TitleScreen implements Screen
@@ -10,7 +11,7 @@ public class TitleScreen implements Screen
 	}
 
 	@Override
-	public void update(SpaceJackalGame game)
+	public void update()
 	{
 	}
 
@@ -23,9 +24,29 @@ public class TitleScreen implements Screen
 				false, true);
 	}
 
+    @Override
+    public boolean onKeyDown(int keyCode)
+    {
+        if (keyCode == Keys.SPACE)
+            next = true;
+        
+        return true;
+    }
+
+	@Override
+	public boolean onKeyUp(int keyCode)
+	{
+		return true;
+	}
+
 	@Override
 	public Screen getNextScreen()
 	{
+        if (next)
+            return new GameScreen();
+        
 		return null;
 	}
+    
+    private boolean next = false;
 }

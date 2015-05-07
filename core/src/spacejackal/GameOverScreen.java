@@ -10,7 +10,7 @@ public class GameOverScreen implements Screen
 	}
 
 	@Override
-	public void update(SpaceJackalGame game)
+	public void update()
 	{
 	}
 
@@ -23,5 +23,17 @@ public class GameOverScreen implements Screen
 	public Screen getNextScreen()
 	{
 		return null;
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode)
+	{
+		return true;
+	}
+
+	@Override
+	public boolean onKeyUp(int keyCode)
+	{
+		return true;
 	}
 }
