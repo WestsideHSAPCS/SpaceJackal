@@ -43,7 +43,7 @@ public abstract class Sprite
     public abstract int getCenterY();
     public abstract int getRadius();
     
-    public abstract void update();
+    public abstract void update(double shipXMotion, double shipYMotion);
     public abstract void draw(SpriteBatch batch);
     public abstract void handleKey(int keyCode);
 

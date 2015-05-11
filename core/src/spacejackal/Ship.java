@@ -15,8 +15,8 @@ public class Ship extends Sprite
         if (texture == null)
             texture = new Texture(Gdx.files.internal("spritesheet.png"));
         
-        x = SpaceJackalGame.playWidth / 2;
-        y = SpaceJackalGame.playHeight / 2;
+        x = 0 - shipW / 2;
+        y = 0 - shipH / 2;
         
         rotation = 180;
         direction = new Vector2f();
@@ -45,34 +45,32 @@ public class Ship extends Sprite
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void update()
-    {    
+	@Override
+	public void update(double shipXMotion, double shipYMotion)
+	{
         this.findMoveDirection();
-        x -= dy;
-        y += dx;
-        
-        if (x > SpaceJackalGame.playWidth + shipW)
-            x = 0 - shipW;
-        else if (x < 0 - shipW)
-            x = SpaceJackalGame.playWidth + shipW;
-        else if (y > SpaceJackalGame.playHeight + shipH)
-            y = 0 - shipH;
-        else if (y < 0 - shipH)
-            y = SpaceJackalGame.playHeight + shipH;
-        
+		// The ship does not actually move - instead, it remembers its "motion"
+		// to communicate to all the other sprites.
+
+		lastXMotion = dx;
+		lastYMotion = dy;
     }
-    
-    public void findMoveDirection()
+
+	public double getLastXMotion()
+	{
+		return lastXMotion;
+	}
+
+	public double getLastYMotion()
+	{
+		return lastYMotion;
+	}
+
+	public void findMoveDirection()
     {
         //first get the direction the entity is pointed
-        direction.x = (float)Math.cos(Math.toRadians(rotation));
-        direction.y = (float)Math.sin(Math.toRadians(rotation));
-        
-        if (direction.length() > 0) 
-        {
-           direction.normalize();
-        }
+        direction.x = -(float)Math.sin(Math.toRadians(rotation));
+        direction.y = (float)Math.cos(Math.toRadians(rotation));
         
         //Then scale it by the current speed to get the velocity
         dx = (float)direction.x * speed;
@@ -82,8 +80,13 @@ public class Ship extends Sprite
     @Override
     public void draw(SpriteBatch batch)
     {
-                batch.draw(texture, 
-                (float)x, (float)y,
+		// Offset location by half the window size (because (0, 0) is considered
+		// the center of the window)
+
+		float drawX = (float)(x + SpaceJackalGame.playWidth / 2);
+		float drawY = (float)(y + SpaceJackalGame.playHeight / 2);
+		batch.draw(texture, 
+                drawX, drawY,
                 (shipW / 2), (shipH / 2),
                 shipW, shipH,
                 1.0f, 1.0f,
@@ -114,8 +117,11 @@ public class Ship extends Sprite
     
     private double dx = 3;
     private double dy = 3;
-    
-    private float rotation;
+
+	private double lastXMotion;
+	private double lastYMotion;
+
+	private float rotation;
     private Vector2f direction;
     
     private Texture texture;
