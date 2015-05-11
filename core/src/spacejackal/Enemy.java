@@ -2,9 +2,6 @@ package spacejackal;
 
 public abstract class Enemy extends Sprite{
 
-	public Enemy() {
-	}
-
 	public Enemy(double x, double y)
     {
         this.x = x;
