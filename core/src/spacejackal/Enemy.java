@@ -10,6 +10,14 @@ public abstract class Enemy extends Sprite{
         this.x = x;
         this.y = y;
     }
+
+	@Override
+	public void update(double shipXMotion, double shipYMotion){
+		x -= shipXMotion;
+		y -= shipYMotion;
+	}
+	
+	
 	
 	@Override
 	public void handleCollision(Sprite other) {
