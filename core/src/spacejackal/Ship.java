@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import javax.vecmath.Vector2f;
 
 
 public class Ship extends Sprite
@@ -19,7 +18,6 @@ public class Ship extends Sprite
         y = 0 - shipH / 2;
         
         rotation = 180;
-        direction = new Vector2f();
     }
     
     public float getRotation()
@@ -69,12 +67,12 @@ public class Ship extends Sprite
 	public void findMoveDirection()
     {
         //first get the direction the entity is pointed
-        direction.x = -(float)Math.sin(Math.toRadians(rotation));
-        direction.y = (float)Math.cos(Math.toRadians(rotation));
+        float xDir = -(float)Math.sin(Math.toRadians(rotation));
+        float yDir = (float)Math.cos(Math.toRadians(rotation));
         
         //Then scale it by the current speed to get the velocity
-        dx = (float)direction.x * speed;
-        dy = (float)direction.y * speed;
+        dx = (float)xDir * speed;
+        dy = (float)yDir * speed;
     }
 
     @Override
@@ -122,7 +120,6 @@ public class Ship extends Sprite
 	private double lastYMotion;
 
 	private float rotation;
-    private Vector2f direction;
     
     private Texture texture;
     private int imageX;
