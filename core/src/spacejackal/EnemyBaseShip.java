@@ -31,21 +31,21 @@ public class EnemyBaseShip extends Enemy
     @Override
     public int getCenterX()
     {
-        return (int)(x + baseW/2);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
     }
 
     @Override
     public int getCenterY()
     {
-        return (int)(y + baseH/2);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
     }
 
     @Override
     public int getRadius()
     {
-        return baseW/2;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
     }
-
+    
     @Override
     public void draw(SpriteBatch batch)
     {
