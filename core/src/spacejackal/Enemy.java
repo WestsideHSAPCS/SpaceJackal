@@ -23,4 +23,6 @@ public abstract class Enemy extends Sprite{
 	
 	
 	
+	static final int virtualWidth = 4000;
+	static final int virtualHeight = 4000;
 }
