@@ -13,4 +13,6 @@ public interface Screen
 	public boolean onKeyUp(int keyCode);
 
 	public Screen getNextScreen();
+	
+	
 }

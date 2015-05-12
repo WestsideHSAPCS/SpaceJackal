@@ -59,9 +59,9 @@ public class BasicEnemyShip extends Enemy
         }
     }
     
-    private static int shipW = 40;
-    private static int shipH = 35;
-    private static int speed = 5;
+    private static final int shipW = 40;
+    private static final int shipH = 35;
+    private static final int speed = 5;
     private int health;
     
     private double dx = 3;

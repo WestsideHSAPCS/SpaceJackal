@@ -74,7 +74,8 @@ public class GameScreen implements Screen
         
         if (keyCode == Keys.ESCAPE)
             Gdx.app.exit();
-        
+        if (keyCode == Keys.R)
+            othersprites.add(new Rock(50,50));
         return true;
     }
 
@@ -89,7 +90,7 @@ public class GameScreen implements Screen
     {
         return null;
     }
-   
+
 	private Ship ship;
     private ArrayList<Sprite> othersprites;
     private ArrayList<Sprite> newSprites;

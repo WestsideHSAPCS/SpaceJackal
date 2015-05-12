@@ -12,6 +12,19 @@ public abstract class Enemy extends Sprite{
 	public void update(double shipXMotion, double shipYMotion){
 		x -= shipXMotion;
 		y -= shipYMotion;
+                
+                if(x < -virtualWidth / 2){
+                    x = -x;
+                }
+                if(x > virtualWidth / 2){
+                    x = -x;
+                }
+                if(y > virtualHeight / 2){
+                    y = -y;
+                }
+                if(y < -virtualHeight / 2){
+                    y = -y;
+                }
 	}
 	
 	
@@ -21,8 +34,6 @@ public abstract class Enemy extends Sprite{
 		super.handleCollision(other); //To change body of generated methods, choose Tools | Templates.
 	}
 	
-	
-	
-	static final int virtualWidth = 4000;
-	static final int virtualHeight = 4000;
+	static final int virtualWidth = 2000;
+	static final int virtualHeight = 2000;
 }
