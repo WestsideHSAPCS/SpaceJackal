@@ -16,13 +16,13 @@ public abstract class Enemy extends Sprite{
                 if(x < -virtualWidth / 2){
                     x = -x;
                 }
-                if(x > virtualWidth / 2){
+				else if(x > virtualWidth / 2){
                     x = -x;
                 }
                 if(y > virtualHeight / 2){
                     y = -y;
                 }
-                if(y < -virtualHeight / 2){
+				else if(y < -virtualHeight / 2){
                     y = -y;
                 }
 	}
