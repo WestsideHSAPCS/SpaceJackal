@@ -46,7 +46,7 @@ public class Rock extends Enemy{
     public void draw(SpriteBatch batch) {
         
         float drawX = (float)(x + rockW / 2);
-	float drawY = (float)(y + rockH / 2);
+        float drawY = (float)(y + rockH / 2);
         batch.draw(texture, 
                 drawX, drawY,
                 (rockW / 2), (rockH / 2),

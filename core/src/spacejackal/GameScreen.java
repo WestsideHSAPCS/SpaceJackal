@@ -76,6 +76,8 @@ public class GameScreen implements Screen
             Gdx.app.exit();
         if (keyCode == Keys.R)
             othersprites.add(new Rock(50,50));
+        if (keyCode == Keys.E)
+            othersprites.add(new EnemyBaseShip(50, 50));
         return true;
     }
 
