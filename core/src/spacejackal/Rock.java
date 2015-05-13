@@ -23,17 +23,17 @@ public class Rock extends Enemy{
 
     @Override
     public int getCenterX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int) (rockW / 2 + x);
     }
 
     @Override
     public int getCenterY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int) (rockH / 2 + y);
     }
 
     @Override
     public int getRadius() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rockW / 2 - 5;
     }
 
     @Override
@@ -45,10 +45,9 @@ public class Rock extends Enemy{
     @Override
     public void draw(SpriteBatch batch) {
         
-        float drawX = (float)(x + rockW / 2);
-	float drawY = (float)(y + rockH / 2);
+
         batch.draw(texture, 
-                drawX, drawY,
+                (float)x, (float)y,
                 (rockW / 2), (rockH / 2),
                 rockW, rockH,
                 1.0f, 1.0f,
@@ -61,6 +60,12 @@ public class Rock extends Enemy{
     @Override
     public void handleKey(int keyCode) {
     }
+
+    @Override
+    public void handleCollision(Sprite other) {
+        die = true;
+    }
+    
     
     private Texture texture;
     private int imageX;

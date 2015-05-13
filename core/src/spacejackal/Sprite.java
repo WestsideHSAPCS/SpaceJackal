@@ -26,6 +26,7 @@ public abstract class Sprite
         int yDiff = s1.getCenterY() - s2.getCenterY();
         int radSum = s1.getRadius() + s2.getRadius();
         
+        
         return (xDiff * xDiff + yDiff * yDiff) < (radSum * radSum);
     }
     
