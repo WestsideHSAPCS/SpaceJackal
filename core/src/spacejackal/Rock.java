@@ -45,7 +45,6 @@ public class Rock extends Enemy{
     @Override
     public void draw(SpriteBatch batch) {
         
-
         batch.draw(texture, 
                 (float)x, (float)y,
                 (rockW / 2), (rockH / 2),
