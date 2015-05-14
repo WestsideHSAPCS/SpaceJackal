@@ -12,7 +12,6 @@ public class BasicEnemyShip extends Enemy
         super(x, y);
          if (texture == null)
             texture = new Texture(Gdx.files.internal("BasicEnemyShip.png"));
-        health = 1;
     }
 
 
@@ -35,15 +34,21 @@ public class BasicEnemyShip extends Enemy
     }
 
     @Override
-    public void update(double x, double y)
+    public void update(double dx, double dy)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        findMoveDirection();
+        super.update(dx, dy);
     }
 
     @Override
     public void draw(SpriteBatch batch)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float drawX = (float)(x + shipW / 2);
+        float drawY = (float)(y + shipH / 2);
+        batch.draw(texture,
+				drawX, drawY, (shipW/2), (shipH/2),
+				shipW, shipH, 2.0f, 2.0f,
+				rotation, imageX * shipW,imageY * shipH, shipW, shipH, false, false);
     }
 
     @Override
@@ -53,19 +58,14 @@ public class BasicEnemyShip extends Enemy
     
     public void findMoveDirection()
     {
-        if (Math.sqrt((x*x) + (y*y)) > 300)
-        {
-           rotation = (float) Math.atan2(y, x);          
-        }
+           rotation = (float) Math.toDegrees(Math.atan2(GameScreen.getShipY(), GameScreen.getShipX()));  
+           //System.out.println(rotation);
     }
     
-    private static final int shipW = 40;
-    private static final int shipH = 35;
+    private static final int shipW = 150;
+    private static final int shipH = 100;
     private static final int speed = 5;
-    private int health;
-    
-    private double dx = 3;
-    private double dy = 3;
+
 
 	private double lastXMotion;
 	private double lastYMotion;
