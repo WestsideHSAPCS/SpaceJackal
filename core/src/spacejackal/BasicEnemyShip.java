@@ -59,7 +59,6 @@ public class BasicEnemyShip extends Enemy
     public void findMoveDirection()
     {
            rotation = (float) Math.toDegrees(Math.atan2(y - GameScreen.getShipY(), x - GameScreen.getShipX()));  
-           System.out.println(rotation);
     }
     
     private static final int shipW = 32;
