@@ -19,6 +19,15 @@ public class Ship extends Sprite
         
         rotation = 180;
     }
+    public double getX()
+    {
+       return (float)(x + SpaceJackalGame.playWidth / 2);
+    }
+    
+    public double getY()
+    {
+        return (y + SpaceJackalGame.playHeight / 2);
+    }
     
     public float getRotation()
     {
@@ -112,6 +121,9 @@ public class Ship extends Sprite
     private static int shipW = 40;
     private static int shipH = 35;
     private static int speed = 5;
+    
+    private static int tempX;
+    private static int tempY;
     
     private double dx = 3;
     private double dy = 3;
