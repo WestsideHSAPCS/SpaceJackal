@@ -18,19 +18,19 @@ public class BasicEnemyShip extends Enemy
     @Override
     public int getCenterX()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int)(x + shipW / 2);
     }
 
     @Override
     public int getCenterY()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int)(y + shipH / 2);
     }
 
     @Override
     public int getRadius()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int) Math.sqrt((x*x)+(y*y));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class BasicEnemyShip extends Enemy
     public void findMoveDirection()
     {
            rotation = (float) Math.toDegrees(Math.atan2(GameScreen.getShipY(), GameScreen.getShipX()));  
-           //System.out.println(rotation);
+           System.out.println(rotation);
     }
     
     private static final int shipW = 150;
