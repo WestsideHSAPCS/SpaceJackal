@@ -21,12 +21,12 @@ public class Ship extends Sprite
     }
     public double getX()
     {
-       return x;
+       return SpaceJackalGame.playWidth/2 - shipW / 2;
     }
     
     public double getY()
     {
-        return y;
+        return SpaceJackalGame.playHeight/2 - shipH / 2;
     }
     
     public float getRotation()
