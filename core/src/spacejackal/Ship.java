@@ -14,8 +14,8 @@ public class Ship extends Sprite
         if (texture == null)
             texture = new Texture(Gdx.files.internal("spritesheet.png"));
         
-        x = 0 - shipW / 2;
-        y = 0 - shipH / 2;
+        x = SpaceJackalGame.playWidth/2 - shipW / 2;
+        y = SpaceJackalGame.playHeight/2 - shipH / 2;
         
         rotation = 180;
     }
@@ -37,19 +37,19 @@ public class Ship extends Sprite
     @Override
     public int getCenterX()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int) (shipW / 2 + x);
     }
 
     @Override
     public int getCenterY()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (int) (shipH / 2 + y);
     }
 
     @Override
     public int getRadius()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return shipW / 2  - 4;
     }
 
 	@Override
@@ -90,10 +90,8 @@ public class Ship extends Sprite
 		// Offset location by half the window size (because (0, 0) is considered
 		// the center of the window)
 
-		float drawX = (float)(x + SpaceJackalGame.playWidth / 2);
-		float drawY = (float)(y + SpaceJackalGame.playHeight / 2);
 		batch.draw(texture, 
-                drawX, drawY,
+                (float)x, (float)y,
                 (shipW / 2), (shipH / 2),
                 shipW, shipH,
                 1.0f, 1.0f,

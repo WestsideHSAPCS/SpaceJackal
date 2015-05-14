@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class GameScreen implements Screen
 {
@@ -40,9 +41,9 @@ public class GameScreen implements Screen
 		for (Sprite s : othersprites)
             s.update(shipXMove, shipYMove);
         
-       // checkCollisions();
+       checkCollisions();
         
-       // removeDeadSprites();
+       removeDeadSprites();
         
         othersprites.addAll(newSprites);
         newSprites.clear();
@@ -55,12 +56,20 @@ public class GameScreen implements Screen
     
     private void checkCollisions()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(int i = 0; i < othersprites.size(); i++){
+            if(Sprite.checkCollision(othersprites.get(i), ship)){
+                othersprites.get(i).handleCollision(ship);
+            }
+        }
     }
     
     private void removeDeadSprites()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ListIterator<Sprite> iterator = othersprites.listIterator();
+        while(iterator.hasNext()){
+            if(iterator.next().isDead())
+                iterator.remove();
+        }
     }
 
     @Override
