@@ -28,22 +28,19 @@ public class EnemyCosmicMine extends Enemy
         
     }
 
-    @Override
-    public int getCenterX()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+     @Override
+    public int getCenterX() {
+        return (int) (mineW / 2 + x);
     }
 
     @Override
-    public int getCenterY()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+    public int getCenterY() {
+        return (int) (mineH / 2 + y);
     }
 
     @Override
-    public int getRadius()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+    public int getRadius() {
+        return mineW / 2 - 5;
     }
     
     @Override

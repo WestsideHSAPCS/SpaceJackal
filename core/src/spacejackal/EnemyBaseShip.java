@@ -20,6 +20,7 @@ public class EnemyBaseShip extends Enemy
     private int imageX;
     private int imageY;
     
+    
     public EnemyBaseShip(double x, double y)
     {
         super(x, y);
