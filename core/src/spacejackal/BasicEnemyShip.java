@@ -30,7 +30,7 @@ public class BasicEnemyShip extends Enemy
     @Override
     public int getRadius()
     {
-        return 125;
+        return (int) Math.sqrt((x*x)+(y*y));
     }
 
     @Override
@@ -62,8 +62,8 @@ public class BasicEnemyShip extends Enemy
            System.out.println(rotation);
     }
     
-    private static final int shipW = 150;
-    private static final int shipH = 100;
+    private static final int shipW = 32;
+    private static final int shipH = 32;
     private static final int speed = 5;
 
 
