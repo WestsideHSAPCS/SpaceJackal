@@ -15,6 +15,16 @@ public class GameScreen implements Screen
         
         ship = new Ship();
     }
+    
+    public static double getShipX()
+    {
+        return ship.getX();
+    }
+    
+    public static double getShipY()
+    {
+        return ship.getY();
+    }
 
     @Override
     public void update()
@@ -80,6 +90,8 @@ public class GameScreen implements Screen
             othersprites.add(new EnemyBaseShip(50, 50));
         if (keyCode == Keys.C)
             othersprites.add(new EnemyCosmicMine(50, 50));
+        if (keyCode == Keys.Q)
+            othersprites.add(new BasicEnemyShip(50,50));
         return true;
     }
 
@@ -95,7 +107,7 @@ public class GameScreen implements Screen
         return null;
     }
 
-	private Ship ship;
+	private static Ship ship;
     private ArrayList<Sprite> othersprites;
     private ArrayList<Sprite> newSprites;
 }
