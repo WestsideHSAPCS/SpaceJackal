@@ -101,6 +101,14 @@ public class GameScreen implements Screen
             othersprites.add(new EnemyCosmicMine(50, 50));
         if (keyCode == Keys.Q)
             othersprites.add(new BasicEnemyShip(50,50));
+		if (keyCode == Keys.SPACE)
+		{
+			othersprites.add(new Projectile(ship.getCenterX(), ship.getCenterY(),
+			ship.getRotation()));
+			
+			othersprites.add(new Projectile(ship.getCenterX(), ship.getCenterY(),
+			ship.getRotation() + 180));
+		}
         return true;
     }
 

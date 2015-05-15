@@ -11,5 +11,5 @@ public class DesktopLauncher {
 		config.height = SpaceJackalGame.playHeight;
 		config.title = "Space Jackal";
 		new LwjglApplication(new SpaceJackalGame(), config);
-	}
+}
 }
