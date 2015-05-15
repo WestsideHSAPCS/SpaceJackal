@@ -3,6 +3,7 @@ package spacejackal;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.util.Random;
 
 public class BasicEnemyShip extends Enemy
 {
@@ -10,8 +11,10 @@ public class BasicEnemyShip extends Enemy
     public BasicEnemyShip(double x, double y)
     {
         super(x, y);
-         if (texture == null)
+        if (texture == null)
             texture = new Texture(Gdx.files.internal("BasicEnemyShip.png"));
+        goalY = (y - GameScreen.getShipY()) + ((Math.random() * 40) - 20);
+        goalX = (x - GameScreen.getShipX()) + ((Math.random() * 40) - 20);
     }
 
 
@@ -51,7 +54,7 @@ public class BasicEnemyShip extends Enemy
         batch.draw(texture,
 				drawX, drawY, (shipW/2), (shipH/2),
 				shipW, shipH, 2.0f, 2.0f,
-				rotation, imageX * shipW,imageY * shipH, shipW, shipH, false, false);
+				pRotation, imageX * shipW,imageY * shipH, shipW, shipH, false, false);
     }
 
     @Override
@@ -63,9 +66,10 @@ public class BasicEnemyShip extends Enemy
     {
         double playerY = y - GameScreen.getShipY();
         double playerX = x - GameScreen.getShipX();
-        rotation = (float)Math.toDegrees(Math.atan2(playerY, playerX));
-        float xDir = -(float)Math.cos(Math.toRadians(rotation));
-        float yDir = -(float)Math.sin(Math.toRadians(rotation));
+        mRotation = (float)Math.toDegrees(Math.atan2(playerY + goalY, playerX + goalX));
+        pRotation = (float)Math.toDegrees(Math.atan2(playerY, playerX));
+        float xDir = -(float)Math.cos(Math.toRadians(mRotation));
+        float yDir = -(float)Math.sin(Math.toRadians(mRotation));
         xMove = (float)xDir * speed;
         yMove = (float)yDir * speed; 
         
@@ -73,15 +77,18 @@ public class BasicEnemyShip extends Enemy
     
     private static final int shipW = 32;
     private static final int shipH = 32;
-    private static final int speed = 3;
+    private static final int speed = 4;
 
 
 	private double lastXMotion;
 	private double lastYMotion;
     private double xMove;
     private double yMove;
+    private double goalY;
+    private double goalX;
 
-	private float rotation;
+	private float pRotation;
+    private float mRotation;
     
     private Texture texture;
     private int imageX;
