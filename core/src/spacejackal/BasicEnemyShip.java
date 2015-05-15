@@ -34,10 +34,10 @@ public class BasicEnemyShip extends Enemy
     }
 
     @Override
-    public void update(double dx, double dy)
+    public void update(double dxa, double dya)
     {
         findMoveDirection();
-        super.update(dx, dy);
+        super.update(-dx, dy);
     }
 
     @Override
@@ -58,16 +58,24 @@ public class BasicEnemyShip extends Enemy
     
     public void findMoveDirection()
     {
-           rotation = (float) Math.toDegrees(Math.atan2(y - GameScreen.getShipY(), x - GameScreen.getShipX()));  
+        double playerY =  y - GameScreen.getShipY();
+        double playerX = x - GameScreen.getShipX();
+        rotation = (float) Math.toDegrees(Math.atan2(playerY, playerX));
+        float xDir = (float)Math.sin(Math.toRadians(rotation));
+        float yDir = (float)Math.cos(Math.toRadians(rotation));
+        dx = (float)xDir * speed;
+        dy = (float)yDir * speed;             
     }
     
     private static final int shipW = 32;
     private static final int shipH = 32;
-    private static final int speed = 5;
+    private static final int speed = 6;
 
 
 	private double lastXMotion;
 	private double lastYMotion;
+    private double dx;
+    private double dy;
 
 	private float rotation;
     
