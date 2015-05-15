@@ -32,28 +32,27 @@ public class EnemyBaseShip extends Enemy
     @Override
     public int getCenterX()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+        return (int)(x + baseW / 2);
     }
 
     @Override
     public int getCenterY()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+        return (int)(y + baseH / 2);
     }
 
     @Override
     public int getRadius()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    }
+        return 50;
     }
     
     @Override
     public void draw(SpriteBatch batch)
     {
-        float drawX = (float)(x + baseW / 2);
-		float drawY = (float)(y + baseH / 2);
+        
 		batch.draw(texture, 
-                drawX, drawY,
+                (float)x, (float)y,
                 (baseW / 2), (baseH / 2),
                 baseW, baseH,
                 1.0f, 1.0f,
@@ -69,6 +68,12 @@ public class EnemyBaseShip extends Enemy
         
     }
 
+    @Override
+    public void handleCollision(Sprite other) {
+        die = true;
+    }
+
+    
     @Override
     public void update(double shipXMotion, double shipYMotion)
     {
