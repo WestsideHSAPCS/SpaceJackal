@@ -2,6 +2,7 @@ package spacejackal;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -13,7 +14,10 @@ public class GameScreen implements Screen
     {
         othersprites = new ArrayList<>();
         newSprites = new ArrayList<>();
-        
+        m = Gdx.audio.newMusic(Gdx.files.internal("The_Dark_Knight_Rises_Main_Theme_.ogg"));
+		m.setLooping(true);
+		m.play();
+
         ship = new Ship();
     }
     
@@ -134,4 +138,5 @@ public class GameScreen implements Screen
 	private static Ship ship;
     private static ArrayList<Sprite> othersprites;
     private static ArrayList<Sprite> newSprites;
+    private Music m;
 }
