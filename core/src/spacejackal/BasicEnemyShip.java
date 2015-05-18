@@ -13,8 +13,8 @@ public class BasicEnemyShip extends Enemy
         super(x, y);
         if (texture == null)
             texture = new Texture(Gdx.files.internal("BasicEnemyShip.png"));
-        goalY = (y - GameScreen.getShipY()) + ((Math.random() * 40) - 20);
-        goalX = (x - GameScreen.getShipX()) + ((Math.random() * 40) - 20);
+        goalY = (y - GameScreen.getShipY()) + ((Math.random() * 20) - 10);
+        goalX = (x - GameScreen.getShipX()) + ((Math.random() * 20) - 10);
     }
 
 
@@ -72,7 +72,20 @@ public class BasicEnemyShip extends Enemy
         float yDir = -(float)Math.sin(Math.toRadians(mRotation));
         xMove = (float)xDir * speed;
         yMove = (float)yDir * speed; 
-        
+        int fireVar = (int) Math.random() * 1000;
+        if (fireVar > 950)
+            fireProjectile();
+    }
+    
+    public void fireProjectile()
+    {
+        GameScreen.addSprite(new Projectile(x,y,pRotation));
+    }
+    
+    @Override
+    public void handleCollision(Sprite other) {
+        if (other instanceof Projectile)
+            die = true;
     }
     
     private static final int shipW = 32;
