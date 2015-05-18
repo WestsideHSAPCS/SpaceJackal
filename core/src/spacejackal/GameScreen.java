@@ -49,7 +49,7 @@ public class GameScreen implements Screen
         newSprites.clear();
     }
     
-    public void addSprite(Sprite s)
+    public static void addSprite(Sprite s)
     {
         newSprites.add(s);
     }
@@ -111,6 +111,13 @@ public class GameScreen implements Screen
 		}
         return true;
     }
+    
+    public void fireProjectile(double sX, double sY, float rotation)
+    {
+        othersprites.add(new Projectile(sX, sY,
+			rotation));
+        
+    }
 
 	@Override
 	public boolean onKeyUp(int keyCode)
@@ -125,6 +132,6 @@ public class GameScreen implements Screen
     }
 
 	private static Ship ship;
-    private ArrayList<Sprite> othersprites;
-    private ArrayList<Sprite> newSprites;
+    private static ArrayList<Sprite> othersprites;
+    private static ArrayList<Sprite> newSprites;
 }
