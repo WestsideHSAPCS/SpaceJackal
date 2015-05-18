@@ -13,8 +13,8 @@ public class BasicEnemyShip extends Enemy
         super(x, y);
         if (texture == null)
             texture = new Texture(Gdx.files.internal("BasicEnemyShip.png"));
-        goalY = (y - GameScreen.getShipY()) + ((Math.random() * 20) - 10);
-        goalX = (x - GameScreen.getShipX()) + ((Math.random() * 20) - 10);
+      //  goalY = (y - GameScreen.getShipY()) + ((Math.random() * 20) - 10);
+       // goalX = (x - GameScreen.getShipX()) + ((Math.random() * 20) - 10);
     }
 
 
@@ -42,6 +42,9 @@ public class BasicEnemyShip extends Enemy
         findMoveDirection();
         x += xMove;
         y += yMove;
+        int fireVar = (int) (Math.random() * 1000);
+        if (fireVar > 950)
+            fireProjectile();
         super.update(dx, dy);
         
     }
@@ -66,20 +69,19 @@ public class BasicEnemyShip extends Enemy
     {
         double playerY = y - GameScreen.getShipY();
         double playerX = x - GameScreen.getShipX();
-        mRotation = (float)Math.toDegrees(Math.atan2(playerY + goalY, playerX + goalX));
+        //mRotation = (float)Math.toDegrees(Math.atan2(playerY + goalY, playerX + goalX));
         pRotation = (float)Math.toDegrees(Math.atan2(playerY, playerX));
-        float xDir = -(float)Math.cos(Math.toRadians(mRotation));
-        float yDir = -(float)Math.sin(Math.toRadians(mRotation));
+        float xDir = -(float)Math.cos(Math.toRadians(pRotation));
+        float yDir = -(float)Math.sin(Math.toRadians(pRotation));
         xMove = (float)xDir * speed;
         yMove = (float)yDir * speed; 
-        int fireVar = (int) Math.random() * 1000;
-        if (fireVar > 950)
-            fireProjectile();
     }
     
     public void fireProjectile()
     {
-        GameScreen.addSprite(new Projectile(x,y,pRotation));
+        float drawX = (float)(x + shipW / 2);
+        float drawY = (float)(y + shipH / 2);
+        GameScreen.addSprite(new Projectile(drawX,drawY,pRotation));
     }
     
     @Override
