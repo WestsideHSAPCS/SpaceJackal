@@ -34,7 +34,7 @@ public class Projectile extends Enemy
 	@Override
 	public int getCenterY()
 	{
-		return (int) (x + lazerH / 2);
+		return (int) (y + lazerH / 2);
 	}
 
 	@Override

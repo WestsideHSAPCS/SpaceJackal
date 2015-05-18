@@ -33,7 +33,7 @@ public class BasicEnemyShip extends Enemy
     @Override
     public int getRadius()
     {
-        return (int) Math.sqrt((x*x)+(y*y));
+        return shipW;
     }
 
     @Override

@@ -61,6 +61,21 @@ public class GameScreen implements Screen
                 othersprites.get(i).handleCollision(ship);
             }
         }
+		
+		for (int i = 0; i < othersprites.size(); i++)
+        {
+            Sprite s1 = othersprites.get(i);
+            for (int j = i + 1; j < othersprites.size(); j++)
+            {
+                Sprite s2 = othersprites.get(j);
+                
+                if (Sprite.checkCollision(s1, s2))
+                {
+                    s1.handleCollision(s2);
+                    s2.handleCollision(s1);
+                }
+            }
+        }
     }
     
     private void removeDeadSprites()
