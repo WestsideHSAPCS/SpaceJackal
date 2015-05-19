@@ -9,6 +9,7 @@ public class Projectile extends Enemy
 	public Projectile(double x, double y, double dir)
 	{
 		super(x, y);
+        System.out.printf("x, y = %f, %f\n", x, y);
 
 		texture = new Texture(Gdx.files.internal(projectileImg));
 		
@@ -23,6 +24,8 @@ public class Projectile extends Enemy
 		rotation = (float) dir;
 		
 		timer = 30;
+        
+        System.out.printf("Created projectile at %f, %f\n", this.x, this.y);
 	}
 
 	@Override
@@ -91,9 +94,6 @@ public class Projectile extends Enemy
 	public void handleKey(int keyCode)
 	{
 	}
-
-	protected double x;
-	protected double y;
 
 	private double dx;
 	private double dy;

@@ -11,6 +11,7 @@ public abstract class Sprite
 
     public Sprite(double x, double y)
     {
+        System.out.printf("In sprite constructor; x, y = %f, %f\n", x, y);
         this.x = x;
         this.y = y;
     }

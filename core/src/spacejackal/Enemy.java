@@ -4,8 +4,7 @@ public abstract class Enemy extends Sprite{
 
 	public Enemy(double x, double y)
     {
-        this.x = x;
-        this.y = y;
+        super(x, y);
     }
 
 	@Override
